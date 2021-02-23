@@ -1,7 +1,7 @@
 {
   "name": "codemirror-ssr",
   "version": "0.0.1",
-  "main": "lib/index.js",
+  "main": "lib/codemirror.js",
   "repository": "git@github.com:pd4d10/codemirror-ssr.git",
   "author": "Rongjian Zhang <pd4d10@gmail.com>",
   "license": "MIT",
