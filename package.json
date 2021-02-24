@@ -9,7 +9,8 @@
     "lib",
     "mode",
     "addon",
-    "keymap"
+    "keymap",
+    "index.d.ts"
   ],
   "types": "index.d.ts",
   "devDependencies": {
