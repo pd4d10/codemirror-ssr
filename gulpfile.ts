@@ -5,7 +5,7 @@ import * as File from "vinyl";
 import * as del from "del";
 
 function clean() {
-  return del("{lib,addon,keymap,mode,index.d.ts}");
+  return del("{lib,addon,keymap,mode}");
 }
 
 function js() {

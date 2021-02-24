@@ -13,6 +13,9 @@
     "index.d.ts"
   ],
   "types": "index.d.ts",
+  "scripts": {
+    "prepublishOnly": "npx gulp"
+  },
   "devDependencies": {
     "@types/gulp": "^4.0.8",
     "@types/through2": "^2.0.36",
