@@ -32,22 +32,6 @@ function js() {
     .pipe(dest("."));
 }
 
-function cmDts() {
-  return src(["node_modules/@types/codemirror/index.d.ts"])
-    .pipe(
-      through2.obj((file: File, _, cb) => {
-        const code = file.contents.toString().replace(
-          "export = CodeMirror;",
-          `declare const factory: () => typeof CodeMirror;
-export = factory;`
-        );
-        file.contents = Buffer.from(code);
-        cb(null, file);
-      })
-    )
-    .pipe(dest("."));
-}
-
 function dts() {
   const importDeclare = "import * as CodeMirror from 'codemirror'";
 
@@ -70,10 +54,6 @@ function dts() {
           if (!code.includes(importDeclare)) {
             code += importDeclare;
           }
-          code = code.replace(
-            /'codemirror'/g,
-            JSON.stringify("codemirror-ssr")
-          );
 
           code += `
 declare const use: (cm: typeof CodeMirror) => void;
@@ -89,4 +69,4 @@ export = use;
     .pipe(dest("."));
 }
 
-export default series(clean, js, cmDts, dts);
+export default series(clean, js, dts);
