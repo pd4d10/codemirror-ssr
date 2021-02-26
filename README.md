@@ -35,3 +35,11 @@ function mounted() {
   });
 }
 ```
+
+## Built with codemirror-ssr
+
+- [ByteMD](https://github.com/bytedance/bytemd): A hackable Markdown editor component built with Svelte
+
+## License
+
+MIT
