@@ -2,7 +2,7 @@ import * as fs from "fs";
 import { src, dest, series } from "gulp";
 import * as through2 from "through2";
 import * as File from "vinyl";
-import * as del from "del";
+import del from "del";
 
 function clean() {
   return del("{lib,addon,keymap,mode}");
