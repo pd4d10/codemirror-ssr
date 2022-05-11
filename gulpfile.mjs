@@ -1,7 +1,7 @@
-import * as fs from "fs";
-import { src, dest, series } from "gulp";
-import * as through2 from "through2";
-import * as File from "vinyl";
+// @ts-check
+import fs from "fs";
+import gulp from "gulp";
+import through2 from "through2";
 import del from "del";
 
 function clean() {
@@ -9,9 +9,10 @@ function clean() {
 }
 
 function js() {
-  return src(["node_modules/codemirror/{lib,addon,keymap,mode}/**/*"])
+  return gulp
+    .src(["node_modules/codemirror/{lib,addon,keymap,mode}/**/*"])
     .pipe(
-      through2.obj((file: File, _, cb) => {
+      through2.obj((/** @type {import("vinyl")} */ file, _, cb) => {
         if (file.isBuffer() && file.extname === ".js") {
           let code = file.contents.toString();
 
@@ -29,15 +30,16 @@ function js() {
         cb(null, file);
       })
     )
-    .pipe(dest("."));
+    .pipe(gulp.dest("."));
 }
 
 function dts() {
   const importDeclare = "import * as CodeMirror from 'codemirror'";
 
-  return src(["node_modules/codemirror/{addon,keymap,mode}/**/*"])
+  return gulp
+    .src(["node_modules/codemirror/{addon,keymap,mode}/**/*"])
     .pipe(
-      through2.obj((file: File, _, cb) => {
+      through2.obj((/** @type {import("vinyl")} */ file, _, cb) => {
         if (file.isBuffer() && file.extname === ".js") {
           let code = "";
 
@@ -66,7 +68,7 @@ export = use;
         cb(null, file);
       })
     )
-    .pipe(dest("."));
+    .pipe(gulp.dest("."));
 }
 
-export default series(clean, js, dts);
+export default gulp.series(clean, js, dts);
