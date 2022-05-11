@@ -18,10 +18,10 @@ function js() {
 
           if (file.basename === "codemirror.js") {
             code = code
-              .replace(/\(function[\s\S]*?this,/, "module.exports=")
+              .replace(/\(function[\s\S]*?this,/, "export default ")
               .replace("})));", "})");
           } else {
-            code = code.replace(/\(function[\s\S]*?\n\}\)/, "module.exports=");
+            code = code.replace(/\(function[\s\S]*?\n\}\)/, "export default ");
           }
 
           file.contents = Buffer.from(code);
@@ -34,8 +34,6 @@ function js() {
 }
 
 function dts() {
-  const importDeclare = "import * as CodeMirror from 'codemirror'";
-
   return gulp
     .src(["node_modules/codemirror/{addon,keymap,mode}/**/*"])
     .pipe(
@@ -53,14 +51,7 @@ function dts() {
             code += fs.readFileSync(dtsFilePath, "utf-8"); //+ "\n\n" + code;
           }
 
-          if (!code.includes(importDeclare)) {
-            code += importDeclare;
-          }
-
-          code += `
-declare const use: (cm: typeof CodeMirror) => void;
-export = use;
-`;
+          code += `export default function use(cm: typeof import('codemirror')): void;`;
           file.extname = ".d.ts";
           file.contents = Buffer.from(code);
         }
