@@ -15,9 +15,11 @@
   ],
   "types": "index.d.ts",
   "scripts": {
-    "prepublishOnly": "npx gulp"
+    "build": "gulp",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
+    "@types/codemirror": "^5.60.5",
     "@types/gulp": "^4.0.9",
     "@types/through2": "^2.0.36",
     "codemirror": "^5.65.3",
@@ -26,7 +28,7 @@
     "through2": "^4.0.2",
     "vinyl": "^2.2.1"
   },
-  "dependencies": {
-    "@types/codemirror": "^5.60.5"
+  "peerDependencies": {
+    "@types/codemirror": "^5.0.0"
   }
 }

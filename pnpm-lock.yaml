@@ -10,10 +10,8 @@ specifiers:
   through2: ^4.0.2
   vinyl: ^2.2.1
 
-dependencies:
-  '@types/codemirror': 5.60.5
-
 devDependencies:
+  '@types/codemirror': 5.60.5
   '@types/gulp': 4.0.9
   '@types/through2': 2.0.36
   codemirror: 5.65.3
@@ -49,11 +47,11 @@ packages:
     resolution: {integrity: sha512-TiECZmm8St5YxjFUp64LK0c8WU5bxMDt9YaAek1UqUb9swrSCoJhh92fWu1p3mTEqlHjhB5sY7OFBhWroJXZVg==}
     dependencies:
       '@types/tern': 0.23.4
-    dev: false
+    dev: true
 
   /@types/estree/0.0.51:
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
-    dev: false
+    dev: true
 
   /@types/expect/1.20.4:
     resolution: {integrity: sha512-Q5Vn3yjTDyCMV50TB6VRIbQNxSE4OmZR86VSbGaNpfUolm0iePBB4KdEEHmxoY5sT2+2DIvXW0rvMDP2nHZ4Mg==}
@@ -93,7 +91,7 @@ packages:
     resolution: {integrity: sha512-JAUw1iXGO1qaWwEOzxTKJZ/5JxVeON9kvGZ/osgZaJImBnyjyn0cjovPsf6FNLmyGY8Vw9DoXZCMlfMkMwHRWg==}
     dependencies:
       '@types/estree': 0.0.51
-    dev: false
+    dev: true
 
   /@types/through2/2.0.36:
     resolution: {integrity: sha512-vuifQksQHJXhV9McpVsXKuhnf3lsoX70PnhcqIAbs9dqLH2NgrGz0DzZPDY3+Yh6eaRqcE1gnCQ6QhBn1/PT5A==}
