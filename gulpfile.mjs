@@ -1,4 +1,6 @@
 // @ts-check
+/// <reference lib="esnext" />
+
 import fs from "fs";
 import gulp from "gulp";
 import through2 from "through2";
@@ -48,7 +50,10 @@ function dts() {
             )
             .replace(/\.js$/, ".d.ts");
           if (fs.existsSync(dtsFilePath)) {
-            code += fs.readFileSync(dtsFilePath, "utf-8"); //+ "\n\n" + code;
+            code += fs
+              .readFileSync(dtsFilePath, "utf-8")
+              .replaceAll("'../../'", JSON.stringify("codemirror"))
+              .replaceAll("'../'", JSON.stringify("codemirror"));
           }
 
           code += `export default function use(cm: typeof import('codemirror')): void;`;
